@@ -1,6 +1,6 @@
 <?php
 
-namespace Autoinspector\Services;
+namespace Autoinspector\Service;
 
 class CoreServiceFactory
 {
@@ -14,6 +14,7 @@ class CoreServiceFactory
 
     private static $classMaps = [
         "inspections" => InspectionService::class,
+        "templates" => TemplateService::class,
     ];
 
     public function __get($name)

@@ -36,3 +36,4 @@ clover.xml
 phpdoc.xml
 
 # Ignore cached PHPUnit r
+*.cache

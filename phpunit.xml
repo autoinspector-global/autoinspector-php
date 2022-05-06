@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="./vendor/autoload.php" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory>lib</directory>
+    </include>
+  </coverage>
+  <php>
+    <env name="IS_RUNNING_PHPUNIT" value="true"/>
+  </php>
+  <testsuites>
+    <testsuite name="Autoinspector PHP Test Suite">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
