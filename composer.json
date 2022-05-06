@@ -1,0 +1,20 @@
+{
+    "name": "autoinspector/autoinspector-php",
+    "description": "PHP library for the Autoinspector API.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Autoinspector\\": "lib/"
+        }
+    },
+    "authors": [
+        {
+            "name": "lcnlvrz-revelacion",
+            "email": "luciano.a@revelaciondata.com.ar"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
