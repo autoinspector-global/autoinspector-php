@@ -50,13 +50,14 @@ class AutoinspectorClient
         return $this->coreServiceFactory->__get($name);
     }
 
+
     public function getDefaultConfiguration()
     {
 
         return [
             'api_key' => null,
             'timeout' => 20,
-            'base_url' => array_key_exists("AUTOINSPECTOR_API_BASE_URL", $_ENV) ? $_ENV['AUTOINSPECTOR_API_BASE_URL'] : "https://api.autoinspector.com.ar/" . self::VERSION
+            'base_url' => array_key_exists("AUTOINSPECTOR_API_BASE_URL", $_ENV) ? $_ENV['AUTOINSPECTOR_API_BASE_URL'] : "https://api.autoinspector.com.ar/" . self::VERSION . '/'
         ];
     }
 }

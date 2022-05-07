@@ -11,9 +11,6 @@ trait TestHelper
     {
 
         $envFile =  self::path_join(__DIR__, "../");
-
-        print_r($envFile, false);
-
         $dotenv = Dotenv::createImmutable($envFile);
         $dotenv->load();
 
