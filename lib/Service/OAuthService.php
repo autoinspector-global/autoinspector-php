@@ -28,7 +28,7 @@ class OAuthService
         $this->client = $client;
     }
 
-    private function getEnv(string $key)
+    private function getEnv($key)
     {
         try {
             return $_ENV[$key];
@@ -49,7 +49,7 @@ class OAuthService
         ];
     }
 
-    public function exchangeCodeForAccessToken(string $code)
+    public function exchangeCodeForAccessToken($code)
     {
 
         return Helper::requestWrapper(function () use ($code) {
@@ -61,7 +61,7 @@ class OAuthService
         });
     }
 
-    public function buildAuthorizationLink(array $scopes)
+    public function buildAuthorizationLink($scopes)
     {
 
         return 'https://dashboard.autoinspector.com.ar/oauth/connect?' . http_build_query(
@@ -73,7 +73,7 @@ class OAuthService
     }
 
 
-    public function refreshAccessToken(string $refreshToken)
+    public function refreshAccessToken($refreshToken)
     {
 
         return Helper::requestWrapper(function () use ($refreshToken) {

@@ -13,7 +13,7 @@ class MachineryService
         $this->client = $client;
     }
 
-    public function create(array $data)
+    public function create($data)
     {
         $output = Helper::filterInputValues($data['inputValues']);
 
@@ -29,7 +29,7 @@ class MachineryService
         });
     }
 
-    public function update(array $data)
+    public function update($data)
     {
 
         $output = Helper::filterInputValues($data['inputValues']);

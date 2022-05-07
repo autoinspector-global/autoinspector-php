@@ -27,7 +27,6 @@ class InputValuesStub
                 "label" => "TIPO DE POLIZA",
                 "value" => "POLIZA A"
             ],
-
         ];
     }
 }

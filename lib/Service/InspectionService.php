@@ -28,21 +28,21 @@ class InspectionService
         return array_key_exists($name, self::$classMaps) ? new self::$classMaps[$name]($this->client) : null;
     }
 
-    public function finish(string $inspectionId)
+    public function finish($inspectionId)
     {
         return Helper::requestWrapper(function () use ($inspectionId) {
             return $this->client->post('inspection/finish/' . $inspectionId, []);
         });
     }
 
-    public function retrieve(string $inspectionId)
+    public function retrieve($inspectionId)
     {
         return Helper::requestWrapper(function () use ($inspectionId) {
             return $this->client->get('inspection/' . $inspectionId, []);
         });
     }
 
-    public function list(array $params)
+    public function list($params = [])
     {
         return Helper::requestWrapper(function () use ($params) {
             return $this->client->get('inspection/', [

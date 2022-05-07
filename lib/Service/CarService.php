@@ -13,7 +13,7 @@ class CarService
         $this->client = $client;
     }
 
-    public function create(array $data)
+    public function create($data)
     {
         $output = Helper::filterInputValues($data['inputValues']);
 
@@ -29,7 +29,7 @@ class CarService
         });
     }
 
-    public function update(array $data)
+    public function update($data)
     {
 
         $output = Helper::filterInputValues($data['inputValues']);

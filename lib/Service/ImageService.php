@@ -15,7 +15,7 @@ class ImageService
         $this->client = $client;
     }
 
-    public function upload(array $input)
+    public function upload($input)
     {
 
         $image = $input['image'];

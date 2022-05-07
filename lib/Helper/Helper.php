@@ -21,7 +21,7 @@ class Helper
         }
     }
 
-    static function buildMultipartForm(array $data, array $files)
+    static function buildMultipartForm($data, $files)
     {
 
 
@@ -45,7 +45,7 @@ class Helper
         ];
     }
 
-    static function filterInputValues(array $inputValues)
+    static function filterInputValues($inputValues)
     {
 
         $inputValuesFiles = [];
