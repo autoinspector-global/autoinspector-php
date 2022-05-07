@@ -24,15 +24,15 @@ final class ImageServiceTest extends TestCase
     {
 
         $inspection =  $this->autoinspector->inspections->car->create([
-            'consumer' => ConsumerStub::getStubCreate(),
-            'inputValues' => InputValuesStub::getStubCreate(),
-            'car' => CarStub::getStubCreate(),
+            'consumer' => array_merge(ConsumerStub::getStubCreate(), ConsumerStub::getStubUpdate()),
+            'inputValues' => InputValuesStub::getStubUpdate(),
+            'car' => array_merge(CarStub::getStubCreate(), CarStub::getStubUpdate()),
             'templateId' => $_ENV["AUTOINSPECTOR_CAR_TEMPLATE_ID"],
             'producer'  => ProducerStub::getStub(),
             'initialStatus' => 'started',
         ]);
 
-        $inspection = json_decode($inspection->getBody()->getContents(), true);
+        print_r($inspection, false);
 
         $date = new DateTime();
 
@@ -46,12 +46,14 @@ final class ImageServiceTest extends TestCase
             'image' => fopen(self::path_join(__DIR__, "../../assets/gopher.png"), 'r'),
             'productId' => $inspection['productId']
         ]);
+
+        $this->assertArrayHasKey('message', $response);
     }
 
     public function test_generate_image_token()
     {
-        $token =  $this->autoinspector->images->generateToken();
-
-        $this->assertIsString($token);
+        $response =  $this->autoinspector->images->generateToken();
+        $this->assertArrayHasKey('token', $response);
+        $this->assertIsString($response['token']);
     }
 }

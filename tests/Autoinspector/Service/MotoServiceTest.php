@@ -35,6 +35,8 @@ final class MotoServiceTest extends TestCase
         foreach ($expectedKeys as $expectedKey) {
             $this->assertTrue(array_key_exists($expectedKey, $response));
         }
+
+        return $response;
     }
 
     public function test_create_moto_inspection()

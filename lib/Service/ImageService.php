@@ -3,6 +3,7 @@
 namespace Autoinspector\Service;
 
 use Autoinspector\Helper\Helper;
+use PHPUnit\TextUI\Help;
 
 class ImageService
 {
@@ -17,37 +18,31 @@ class ImageService
     public function upload(array $input)
     {
 
-        if (array_key_exists("coordinates", $input)) {
-            $input["coordinates"] = json_encode($input["coordinates"]);
-        }
+        $image = $input['image'];
 
-        return $this->client->post('inspection/image/' . $input['productId'], [
-            'multipart' => [
-                [
-                    'name' => 'side',
-                    'contents' => $input['side'],
-                ],
-                [
-                    'name' => 'image',
-                    'contents' => $input['image'],
-                    'filename' => basename(stream_get_meta_data($input['image'])["uri"])
-                ],
-                [
-                    'name' => 'coordinates',
-                    'contents' => $input['coordinates'],
-                ],
-                [
-                    'name' => 'date',
-                    'contents' => $input['date'],
+        unset($input['image']);
+
+        return Helper::requestWrapper(function () use ($input, $image) {
+            return $this->client->post('inspection/image/' . $input['productId'], [
+                'multipart' => [
+                    [
+                        'name' => 'image',
+                        'contents' => $image,
+                        'filename' => basename(stream_get_meta_data($image)["uri"])
+                    ],
+                    [
+                        'name' => 'data',
+                        'contents' => json_encode($input),
+                    ],
                 ]
-            ]
-        ]);
+            ]);
+        });
     }
 
     public function generateToken()
     {
         return Helper::requestWrapper(function () {
-            return $this->client->post('/inspection/image/token', []);
+            return $this->client->post('inspection/image/token', []);
         });
     }
 }
