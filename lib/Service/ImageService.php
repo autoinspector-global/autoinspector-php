@@ -2,6 +2,7 @@
 
 namespace Autoinspector\Service;
 
+use Autoinspector\Helper\Helper;
 
 class ImageService
 {
@@ -15,6 +16,11 @@ class ImageService
 
     public function upload(array $input)
     {
+
+        if (array_key_exists("coordinates", $input)) {
+            $input["coordinates"] = json_encode($input["coordinates"]);
+        }
+
         return $this->client->post('inspection/image/' . $input['productId'], [
             'multipart' => [
                 [
@@ -24,6 +30,7 @@ class ImageService
                 [
                     'name' => 'image',
                     'contents' => $input['image'],
+                    'filename' => basename(stream_get_meta_data($input['image'])["uri"])
                 ],
                 [
                     'name' => 'coordinates',
@@ -39,6 +46,8 @@ class ImageService
 
     public function generateToken()
     {
-        return $this->client->post('/inspection/image/token', []);
+        return Helper::requestWrapper(function () {
+            return $this->client->post('/inspection/image/token', []);
+        });
     }
 }

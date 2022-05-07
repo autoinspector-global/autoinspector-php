@@ -28,17 +28,14 @@ final class PeopleServiceTest extends TestCase
             'initialStatus' => 'started'
         ]);
 
-        $this->assertEquals(201, $response->getStatusCode());
-
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
 
         $expectedKeys = ['inspectionId', 'productId', 'message'];
 
         foreach ($expectedKeys as $expectedKey) {
-            $this->assertTrue(array_key_exists($expectedKey, $jsonResponse));
+            $this->assertTrue(array_key_exists($expectedKey, $response));
         }
 
-        return $jsonResponse;
+        return $response;
     }
 
     public function test_create_people_inspection()

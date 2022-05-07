@@ -19,13 +19,7 @@ final class TemplateServiceTest extends TestCase
     {
         $response =  $this->autoinspector->templates->list();
 
-        $this->assertEquals(200, $response->getStatusCode());
-
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
-        $this->assertIsArray($jsonResponse);
-        $this->assertGreaterThan(0, count($jsonResponse));
-
-        return $jsonResponse;
+        $this->assertIsArray($response);
+        $this->assertGreaterThan(0, count($response));
     }
 }

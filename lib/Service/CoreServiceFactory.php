@@ -15,6 +15,8 @@ class CoreServiceFactory
     private static $classMaps = [
         "inspections" => InspectionService::class,
         "templates" => TemplateService::class,
+        "oauth" => OAuthService::class,
+        "images" => ImageService::class,
     ];
 
     public function __get($name)

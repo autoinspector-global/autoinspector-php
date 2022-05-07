@@ -30,21 +30,15 @@ final class GoodsServiceTest extends TestCase
             'initialStatus' => 'started'
         ]);
 
-        $this->assertEquals(201, $response->getStatusCode());
-
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
         $expectedKeys = ['inspectionId', 'productIds', 'message'];
 
         foreach ($expectedKeys as $expectedKey) {
-            $this->assertTrue(array_key_exists($expectedKey, $jsonResponse));
+            $this->assertTrue(array_key_exists($expectedKey, $response));
 
             if ($expectedKey == "productIds") {
-                $this->assertIsArray($jsonResponse[$expectedKey]);
+                $this->assertIsArray($response[$expectedKey]);
             }
         }
-
-        return $jsonResponse;
     }
 
     public function test_create_goods_inspection()

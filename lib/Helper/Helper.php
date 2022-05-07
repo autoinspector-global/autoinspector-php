@@ -2,11 +2,24 @@
 
 namespace Autoinspector\Helper;
 
+use PhpParser\Node\Stmt\TryCatch;
+
 class Helper
 {
 
     const INPUT_VALUES_FILES_KEY = 'inputValuesFiles';
     const INPUT_VALUES_NON_FILES_KEY = 'inputValuesNonFiles';
+
+    static function requestWrapper($requester)
+    {
+
+        try {
+            $response = $requester();
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 
     static function buildMultipartForm(array $data, array $files)
     {

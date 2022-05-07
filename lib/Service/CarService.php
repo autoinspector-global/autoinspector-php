@@ -15,7 +15,6 @@ class CarService
 
     public function create(array $data)
     {
-
         $output = Helper::filterInputValues($data['inputValues']);
 
         $inputValuesNonFiles = $output[Helper::INPUT_VALUES_NON_FILES_KEY];
@@ -23,10 +22,11 @@ class CarService
 
         $data['inputValues'] = $inputValuesNonFiles;
 
-
         $multipart = Helper::buildMultipartForm($data, $inputValuesFiles);
 
-        return $this->client->post('inspection/car', $multipart);
+        return Helper::requestWrapper(function () use ($multipart) {
+            return $this->client->post('inspection/car', $multipart);
+        });
     }
 
     public function update(array $data)
@@ -41,6 +41,8 @@ class CarService
 
         $multipart = Helper::buildMultipartForm($data, $inputValuesFiles);
 
-        return $this->client->put('inspection/car/' . $data['productId'], $multipart);
+        return Helper::requestWrapper(function () use ($multipart, $data) {
+            return $this->client->put('inspection/car/' . $data['productId'], $multipart);
+        });
     }
 }

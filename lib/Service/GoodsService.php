@@ -25,6 +25,8 @@ class GoodsService
 
         $multipart = Helper::buildMultipartForm($data, $inputValuesFiles);
 
-        return $this->client->post('inspection/goods', $multipart);
+        return Helper::requestWrapper(function () use ($multipart) {
+            return $this->client->post('inspection/goods', $multipart);
+        });
     }
 }

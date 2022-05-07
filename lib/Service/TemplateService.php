@@ -2,6 +2,7 @@
 
 namespace Autoinspector\Service;
 
+use Autoinspector\Helper\Helper;
 
 class TemplateService
 {
@@ -17,8 +18,10 @@ class TemplateService
     public function list(
         $params = []
     ) {
-        return $this->client->get('inspection/template/list', [
-            'query' => $params
-        ]);
+        return Helper::requestWrapper(function () use ($params) {
+            return $this->client->get('inspection/template/list', [
+                'query' => $params
+            ]);
+        });
     }
 }

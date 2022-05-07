@@ -30,17 +30,11 @@ final class MotoServiceTest extends TestCase
             'initialStatus' => 'started'
         ]);
 
-        $this->assertEquals(201, $response->getStatusCode());
-
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
         $expectedKeys = ['inspectionId', 'productId', 'message'];
 
         foreach ($expectedKeys as $expectedKey) {
-            $this->assertTrue(array_key_exists($expectedKey, $jsonResponse));
+            $this->assertTrue(array_key_exists($expectedKey, $response));
         }
-
-        return $jsonResponse;
     }
 
     public function test_create_moto_inspection()
@@ -60,10 +54,7 @@ final class MotoServiceTest extends TestCase
             'inputValues' => InputValuesStub::getStubUpdate(),
         ]);
 
-        $this->assertEquals(200, $response->getStatusCode());
 
-        $jsonResponse = json_decode($response->getBody()->getContents());
-
-        $this->assertTrue(array_key_exists('message', $jsonResponse));
+        $this->assertTrue(array_key_exists('message', $response));
     }
 }

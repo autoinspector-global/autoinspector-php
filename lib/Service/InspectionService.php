@@ -2,6 +2,7 @@
 
 namespace Autoinspector\Service;
 
+use Autoinspector\Helper\Helper;
 use Autoinspector\Service\CarService;
 use Autoinspector\Service\MotoService;
 
@@ -29,18 +30,24 @@ class InspectionService
 
     public function finish(string $inspectionId)
     {
-        return $this->client->post('inspection/finish/' . $inspectionId, []);
+        return Helper::requestWrapper(function () use ($inspectionId) {
+            return $this->client->post('inspection/finish/' . $inspectionId, []);
+        });
     }
 
     public function retrieve(string $inspectionId)
     {
-        return $this->client->get('inspection/' . $inspectionId, []);
+        return Helper::requestWrapper(function () use ($inspectionId) {
+            return $this->client->get('inspection/' . $inspectionId, []);
+        });
     }
 
     public function list(array $params)
     {
-        return $this->client->get('inspection/', [
-            'query' => $params,
-        ]);
+        return Helper::requestWrapper(function () use ($params) {
+            return $this->client->get('inspection/', [
+                'query' => $params,
+            ]);
+        });
     }
 }
