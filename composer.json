@@ -2,6 +2,7 @@
   "name": "autoinspector/autoinspector-php",
   "description": "PHP library for the Autoinspector API.",
   "type": "library",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Autoinspector\\": "lib/"
