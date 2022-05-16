@@ -3,7 +3,6 @@
 namespace Autoinspector\Service;
 
 use Autoinspector\Helper\Helper;
-use PHPUnit\TextUI\Help;
 
 class ImageService
 {
@@ -39,10 +38,12 @@ class ImageService
         });
     }
 
-    public function generateToken()
+    public function generateToken($input)
     {
-        return Helper::requestWrapper(function () {
-            return $this->client->post('inspection/image/token', []);
+        return Helper::requestWrapper(function () use ($input) {
+            return $this->client->post('inspection/image/' . $input['productId'], [
+                'body' => json_encode($input)
+            ]);
         });
     }
 }
