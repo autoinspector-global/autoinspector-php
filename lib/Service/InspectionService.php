@@ -15,7 +15,8 @@ class InspectionService
         'moto' => MotoService::class,
         'machinery' => MachineryService::class,
         'goods' => GoodsService::class,
-        'people' => PeopleService::class
+        'people' => PeopleService::class,
+        'custom' => CustomService::class
     ];
 
     public function __construct($client)
@@ -32,6 +33,15 @@ class InspectionService
     {
         return Helper::requestWrapper(function () use ($inspectionId) {
             return $this->client->post('inspection/finish/' . $inspectionId, []);
+        });
+    }
+
+    public function update($inspectionId, $update)
+    {
+        return Helper::requestWrapper(function () use ($inspectionId, $update) {
+            return $this->client->put('inspection/' . $inspectionId, [
+                'body' => $update
+            ]);
         });
     }
 

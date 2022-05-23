@@ -37,9 +37,6 @@ class OAuthService
         }
     }
 
-
-
-
     private function getOAuthCredentials()
     {
 

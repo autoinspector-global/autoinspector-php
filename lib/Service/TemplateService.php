@@ -19,9 +19,17 @@ class TemplateService
         $params = []
     ) {
         return Helper::requestWrapper(function () use ($params) {
-            return $this->client->get('inspection/template/list', [
+            return $this->client->get('inspection/template', [
                 'query' => $params
             ]);
+        });
+    }
+
+    public function retrieve(
+        $templateId
+    ) {
+        return Helper::requestWrapper(function () use ($templateId) {
+            return $this->client->get('inspection/template/' . $templateId );
         });
     }
 }
