@@ -26,7 +26,7 @@ require_once('vendor/autoload.php');
 
 The bindings require the following extensions in order to work properly:
 
--   [`guzzle`](https://secure.php.net/manual/en/book.curl.php)
+- [`guzzle`](https://secure.php.net/manual/en/book.curl.php)
 
 If you use Composer, these dependencies should be handled automatically. If you install manually, you'll want to make sure that these extensions are available.
 
@@ -48,7 +48,7 @@ $inspection = $autoinspector->inspections->car->create([
     'email' => 'lucianoalvarez1212@gmail.com',
     'identification' => '3213232',
 ],
-'inputValues' => [
+'inputs' => [
     [
         "label" => "TIPO DE POLIZA",
         "value" => "POLIZA A"
@@ -71,6 +71,3 @@ print_r($inspection, false);
 ## Documentation
 
 See the [PHP API docs](https://autoinspector.com.ar/docs/api/start?lang=php). (You must have an account in order to be able to read the docs)
-
-
-
