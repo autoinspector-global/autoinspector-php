@@ -42,6 +42,12 @@ Simple usage looks like:
 $autoinspector = new \Autoinspector\AutoinspectorClient('YOU_API_KEY_GOES_HERE');
 
 $inspection = $autoinspector->inspections->car->create([
+'delivery' => [
+    'channel' => 'wsp',
+    'destination' => '3813635420',
+    'disabled' => false,
+],
+'locale' => 'es_AR',
 'consumer' => [
     'firstName' => 'Luciano',
     'lastName' => 'Alvarez',
@@ -50,7 +56,7 @@ $inspection = $autoinspector->inspections->car->create([
 ],
 'inputs' => [
     [
-        "label" => "TIPO DE POLIZA",
+        "identifier" => "input_25dd4378-395d-4fe6-8306-65dcead884b0",
         "value" => "POLIZA A"
     ],
 ],
