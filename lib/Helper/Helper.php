@@ -24,10 +24,9 @@ class Helper
     static function buildMultipartForm($data, $files)
     {
 
-
         $filesFields = array_map(function ($element) {
             return [
-                "name" => $element["label"],
+                "name" => $element["identifier"],
                 "contents" => $element["value"],
                 "filename" => basename(stream_get_meta_data($element["value"])["uri"])
             ];
