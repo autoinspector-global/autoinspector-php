@@ -16,7 +16,8 @@ class InspectionService
         'machinery' => MachineryService::class,
         'goods' => GoodsService::class,
         'people' => PeopleService::class,
-        'custom' => CustomService::class
+        'custom' => CustomService::class,
+        'bike' => BikeService::class
     ];
 
     public function __construct($client)

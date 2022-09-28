@@ -15,12 +15,12 @@ class CustomService
 
     public function create($data)
     {
-        $output = Helper::filterInputValues($data['inputValues']);
+        $output = Helper::filterInputValues($data['inputs']);
 
         $inputValuesNonFiles = $output[Helper::INPUT_VALUES_NON_FILES_KEY];
         $inputValuesFiles = $output[Helper::INPUT_VALUES_FILES_KEY];
 
-        $data['inputValues'] = $inputValuesNonFiles;
+        $data['inputs'] = $inputValuesNonFiles;
 
         $multipart = Helper::buildMultipartForm($data, $inputValuesFiles);
 

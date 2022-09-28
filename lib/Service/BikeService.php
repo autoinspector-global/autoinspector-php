@@ -4,7 +4,7 @@ namespace Autoinspector\Service;
 
 use Autoinspector\Helper\Helper;
 
-class MotoService
+class BikeService
 {
     private $client;
 
@@ -25,7 +25,7 @@ class MotoService
         $multipart = Helper::buildMultipartForm($data, $inputValuesFiles);
 
         return Helper::requestWrapper(function () use ($multipart) {
-            return $this->client->post('inspection/moto', $multipart);
+            return $this->client->post('inspection/bike', $multipart);
         });
     }
 
@@ -42,7 +42,7 @@ class MotoService
         $multipart = Helper::buildMultipartForm($data, $inputValuesFiles);
 
         return Helper::requestWrapper(function () use ($multipart, $data) {
-            return $this->client->put('inspection/moto/' . $data['productId'], $multipart);
+            return $this->client->put('inspection/bike/' . $data['productId'], $multipart);
         });
     }
 }
