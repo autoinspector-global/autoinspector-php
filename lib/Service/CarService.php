@@ -15,17 +15,10 @@ class CarService
 
     public function create($data)
     {
-        $output = Helper::filterInputValues($data['inputs']);
+        $body = json_encode($data);
 
-        $inputValuesNonFiles = $output[Helper::INPUT_VALUES_NON_FILES_KEY];
-        $inputValuesFiles = $output[Helper::INPUT_VALUES_FILES_KEY];
-
-        $data['inputs'] = $inputValuesNonFiles;
-
-        $multipart = Helper::buildMultipartForm($data, $inputValuesFiles);
-
-        return Helper::requestWrapper(function () use ($multipart) {
-            return $this->client->post('inspection/car', $multipart);
+        return Helper::requestWrapper(function () use ($body) {
+            return $this->client->post('inspection/car', $body);
         });
     }
 

@@ -44,6 +44,11 @@ class Helper
         ];
     }
 
+    static function buildBody($data)
+    {
+        return json_encode($data);
+    }
+
     static function filterInputValues($inputValues)
     {
 
