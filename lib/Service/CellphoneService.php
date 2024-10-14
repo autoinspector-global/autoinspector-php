@@ -4,7 +4,7 @@ namespace Autoinspector\Service;
 
 use Autoinspector\Helper\Helper;
 
-class CarService
+class CellphoneService
 {
     private $client;
 
@@ -16,7 +16,7 @@ class CarService
     public function create($data)
     {
         return Helper::requestWrapper(function () use ($data) {
-            return $this->client->post('inspection/car', [
+            return $this->client->post('inspection/cellphone', [
                 'json' => $data
             ]);
         });
@@ -24,7 +24,6 @@ class CarService
 
     public function update($data)
     {
-
         $output = Helper::filterInputValues($data['inputs']);
 
         $inputValuesNonFiles = $output[Helper::INPUT_VALUES_NON_FILES_KEY];
@@ -35,7 +34,7 @@ class CarService
         $multipart = Helper::buildMultipartForm($data, $inputValuesFiles);
 
         return Helper::requestWrapper(function () use ($multipart, $data) {
-            return $this->client->put('inspection/car/' . $data['productId'], $multipart);
+            return $this->client->put('inspection/cellphone/' . $data['productId'], $multipart);
         });
     }
 }

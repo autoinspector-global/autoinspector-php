@@ -5,6 +5,12 @@ namespace Autoinspector\Service;
 use Autoinspector\Helper\Helper;
 use Autoinspector\Service\CarService;
 use Autoinspector\Service\MotoService;
+use Autoinspector\Service\MachineryService;
+use Autoinspector\Service\GoodsService;
+use Autoinspector\Service\PeopleService;
+use Autoinspector\Service\CustomService;
+use Autoinspector\Service\BikeService;
+use Autoinspector\Service\CellphoneService;
 
 class InspectionService
 {
@@ -17,7 +23,8 @@ class InspectionService
         'goods' => GoodsService::class,
         'people' => PeopleService::class,
         'custom' => CustomService::class,
-        'bike' => BikeService::class
+        'bike' => BikeService::class,
+        'cellphone' => CellphoneService::class
     ];
 
     public function __construct($client)

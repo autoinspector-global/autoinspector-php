@@ -15,10 +15,10 @@ class MotoService
 
     public function create($data)
     {
-        $body = json_encode($data);
-
-        return Helper::requestWrapper(function () use ($body) {
-            return $this->client->post('inspection/moto', $body);
+        return Helper::requestWrapper(function () use ($data) {
+            return $this->client->post('inspection/moto', [
+                'json' => $data
+            ]);
         });
     }
 

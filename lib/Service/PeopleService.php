@@ -15,10 +15,10 @@ class PeopleService
 
     public function create($data)
     {
-        $body = json_encode($data);
-
-        return Helper::requestWrapper(function () use ($body) {
-            return $this->client->post('inspection/people', $body);
+        return Helper::requestWrapper(function () use ($data) {
+            return $this->client->post('inspection/people', [
+                'json' => $data
+            ]);
         });
     }
 }
