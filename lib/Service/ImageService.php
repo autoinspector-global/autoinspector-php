@@ -42,7 +42,7 @@ class ImageService
     {
         return Helper::requestWrapper(function () use ($input) {
             return $this->client->post('inspection/image/' . $input['productId'], [
-                'body' => json_encode($input)
+                'json' => $input
             ]);
         });
     }

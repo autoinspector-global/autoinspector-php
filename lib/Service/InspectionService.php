@@ -48,7 +48,7 @@ class InspectionService
     {
         return Helper::requestWrapper(function () use ($inspectionId, $update) {
             return $this->client->put('inspection/' . $inspectionId, [
-                'body' => $update
+                'json' => $update
             ]);
         });
     }
@@ -66,6 +66,29 @@ class InspectionService
             return $this->client->get('inspection/', [
                 'query' => $params,
             ]);
+        });
+    }
+
+    public function createReportRequest($inspectionId, $update)
+    {
+        return Helper::requestWrapper(function () use ($inspectionId, $update) {
+            return $this->client->post('inspection/' . $inspectionId . '/report/request', [
+                'json' => $update,
+            ]);
+        });
+    }
+
+    public function listReportRequests($inspectionId)
+    {
+        return Helper::requestWrapper(function () use ($inspectionId) {
+            return $this->client->get('inspection/' . $inspectionId . '/report/request', []);
+        });
+    }
+
+    public function retrieveReportRequest($inspectionId, $reportRequestId)
+    {
+        return Helper::requestWrapper(function () use ($inspectionId, $reportRequestId) {
+            return $this->client->get('inspection/' . $inspectionId . '/report/request/' . $reportRequestId, []);
         });
     }
 }
