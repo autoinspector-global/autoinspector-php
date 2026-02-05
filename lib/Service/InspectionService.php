@@ -91,4 +91,13 @@ class InspectionService
             return $this->client->get('inspection/' . $inspectionId . '/report/request/' . $reportRequestId, []);
         });
     }
+
+    public function presignDetail($inspectionId, $data = [])
+    {
+        return Helper::requestWrapper(function () use ($inspectionId, $data) {
+            return $this->client->post('inspection/presign/detail/' . $inspectionId, [
+                'json' => $data,
+            ]);
+        });
+    }
 }
